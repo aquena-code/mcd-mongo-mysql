@@ -89,8 +89,13 @@ db.film.aggregate([
             foreignField: "_id",
             as: "language"
         }
+    },
+    {
+        $unwind: 
+        {
+            path: "$language"
+        }
     }
-
 ])
 ```
 

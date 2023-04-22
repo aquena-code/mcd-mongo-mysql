@@ -84,9 +84,9 @@ db.film.aggregate([
     {
         $lookup:
         {
-            from: "film",
-            localField: "_id",
-            foreignField: "language_id",
+            from: "language",
+            localField: "language_id",
+            foreignField: "_id",
             as: "language"
         }
     }

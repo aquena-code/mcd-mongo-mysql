@@ -95,6 +95,12 @@ db.film.aggregate([
         {
             path: "$language"
         }
+    },
+    {
+        $group:
+        
+            {_id:"$language.name", count:{$sum:1}}
+        
     }
 ])
 ```

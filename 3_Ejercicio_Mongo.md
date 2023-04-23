@@ -208,5 +208,32 @@ Resultado:
 
 Respuesta:
 ```
-db.film_actor.aggregate(...
+db.film_actor.aggregate([
+    {
+        $lookup:
+        {
+            from: "film_category",
+            localField: "film_id",
+            foreignField: "film_id",
+            as: "category"
+        }
+    },
+    {
+        $unwind: "$category"
+    },
+    {
+        $set:
+        {
+            category_id: "$category.category_id"
+        }
+    },
+    {
+        $project:
+        {
+            category: 0,
+            film_id: 0
+        }
+    }
+])
+
 ```

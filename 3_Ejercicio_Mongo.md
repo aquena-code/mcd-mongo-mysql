@@ -168,10 +168,17 @@ db.film_actor.aggregate([
         $unwind: "$actor"
     },
     {
+        $set:
+        {
+            "first_name": "$actor.first_name",
+            "last_name": "$actor.last_name",
+        }
+    },
+    {
         $project:
         {
-            "actor.first_name": 1,
-            "actor.last_name": 1,
+            first_name: 1,
+            last_name: 1,
             count: 1,
             _id: 0
         }

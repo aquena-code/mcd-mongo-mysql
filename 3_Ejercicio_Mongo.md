@@ -233,6 +233,18 @@ db.film_actor.aggregate([
             category: 0,
             film_id: 0
         }
+    },
+    {
+        $lookup:
+        {
+            from: "category",
+            localField: "category_id",
+            foreignField: "_id",
+            as: "category"
+        }
+    },
+    {
+        $unwind: "$category"
     }
 ])
 

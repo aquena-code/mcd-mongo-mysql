@@ -152,8 +152,20 @@ db.film_actor.aggregate([
     {
         $match:
         {
-            count: {$gte: 35}
+            count: {$gt: 35}
         }
+    },
+    {
+        $lookup:
+        {
+            from: "actor",
+            localField: "_id",
+            foreignField: "_id",
+            as: "actor"
+        }
+    },
+    {
+        $unwind: "$actor"
     }
 ])
 ```

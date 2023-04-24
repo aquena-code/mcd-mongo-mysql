@@ -245,6 +245,12 @@ db.film_actor.aggregate([
     },
     {
         $unwind: "$category"
+    },
+    {
+        $match:
+        {
+            "category.name": {$eq: 'Comedy'}
+        }
     }
 ])
 

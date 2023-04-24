@@ -278,6 +278,13 @@ db.film_actor.aggregate([
     },
     {
         $unwind: "$actor"
+    },
+    {
+        $set:
+        {
+            first_name: '$actor.first_name', 
+            last_name: '$actor.last_name'
+        }
     }
 ])
 

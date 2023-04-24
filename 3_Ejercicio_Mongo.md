@@ -285,6 +285,13 @@ db.film_actor.aggregate([
             first_name: '$actor.first_name', 
             last_name: '$actor.last_name'
         }
+    },
+    {
+        $project:
+        {
+            actor: 0,
+            _id: 0
+        }
     }
 ])
 

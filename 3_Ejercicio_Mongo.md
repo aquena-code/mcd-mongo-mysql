@@ -257,6 +257,15 @@ db.film_actor.aggregate([
         {
             _id:"$actor_id", comedy_film_count:{$sum:1}
         }
+    },
+    {
+        $sort:
+        {
+            comedy_film_count: -1
+        }
+    },
+    {
+        $limit: 10
     }
 ])
 

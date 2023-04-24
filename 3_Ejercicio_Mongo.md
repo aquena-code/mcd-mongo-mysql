@@ -251,6 +251,12 @@ db.film_actor.aggregate([
         {
             "category.name": {$eq: 'Comedy'}
         }
+    },
+    {
+        $group:
+        {
+            _id:"$actor_id", comedy_film_count:{$sum:1}
+        }
     }
 ])
 

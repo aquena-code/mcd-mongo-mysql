@@ -266,6 +266,18 @@ db.film_actor.aggregate([
     },
     {
         $limit: 10
+    },
+    {
+        $lookup:
+        {
+            from: "actor",
+            localField: "_id",
+            foreignField: "_id",
+            as: "actor"
+        }
+    },
+    {
+        $unwind: "$actor"
     }
 ])
 
